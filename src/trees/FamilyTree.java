@@ -72,7 +72,7 @@ public class FamilyTree
             // the nodes of a tree is like traversing a linked list. If that isn’t clear,
             // draw a tree, mark any leaf node, and then mark its ancestors in order from
             // recent to ancient. Expect a question about this on the final exam.
-            TreeNode ancestor = parent;
+            TreeNode ancestor = this.parent;
             while(ancestor != null) {
             	ancestors.add(ancestor);
             	ancestor = ancestor.parent;
@@ -137,15 +137,6 @@ public class FamilyTree
 	private void addLine(String line) throws TreeException
 	{
 		// Extract parent and array of children.
-<<<<<<< HEAD
-		int colonIndex = line.indexOf(':');
-		if (colonIndex < 0) {
-			throw new TreeException("Invalid format");
-		}
-		String parent = line.substring(0, colonIndex);
-		String childrenString = line.substring(colonIndex + 1);
-		String[] childrenArray = childrenString.split(",");
-=======
 		int colonIndex = line.indexOf(":");
 		if (colonIndex < 0)
 			throw new TreeException("Invalid Format");
@@ -155,7 +146,6 @@ public class FamilyTree
 				                   //the line. You'll use a different version of substring().
 		String[] childrenArray = childrenString.split(",");//childrenString.split(). Check the API for details. The result will be an array
 				                   // of strings, with the separating commas thrown away.
->>>>>>> d62e41f036a3898d1e3895422f466093892d3d37
 		
 		// Find parent node. If root is null then the tree is empty and the
 		// parent node must be constructed. Otherwise the parent node should be 
@@ -165,30 +155,18 @@ public class FamilyTree
 			parentNode = root = new TreeNode(parent);
 		else
 		{
-<<<<<<< HEAD
-			parentNode = root.getNodeWithName(parent);
-			if(parentNode == null) {
-				throw new TreeException("Parent node was not found; data file invalid");
-=======
 			parentNode = root.getNodeWithName(parent);//  There's a method in Node that searches for a named node. 
 			//??? If the parent node wasn't found, there must have been something wrong in the 
 				//data file. Throw an exception.
 			if(parentNode == null) {
 				throw new TreeException("parentNode not found");
->>>>>>> d62e41f036a3898d1e3895422f466093892d3d37
 			}
 		}
 		
 		// Add child nodes to parentNode.
-<<<<<<< HEAD
-		for(String name:childrenArray) {
-			TreeNode newNode = new TreeNode(name);
-			parentNode.children.add(newNode);
-=======
 		//?? For each name in childrenArray, create a new node and add that node to parentNode.
 		for(String a: childrenArray) {
 			parentNode.addChild(new TreeNode(a));
->>>>>>> d62e41f036a3898d1e3895422f466093892d3d37
 		}
 	}
 	
@@ -204,17 +182,10 @@ public class FamilyTree
 		// Get nodes for input names.
 		TreeNode node1 = root.getNodeWithName(name1);		// node whose name is name1
 		if (node1 == null)
-<<<<<<< HEAD
-			throw new TreeException("Invalid Node 1 name inputted");
-		TreeNode node2 = root.getNodeWithName(name2);		// node whose name is name2
-		if (node2 == null)
-			throw new TreeException("Invalid Node 2 name inputted");
-=======
 			throw new TreeException("node1 not found");
 		TreeNode node2 = root.getNodeWithName(name2);	// node whose name is name2
 		if (node2 == null)
 			throw new TreeException("node2 not found");
->>>>>>> d62e41f036a3898d1e3895422f466093892d3d37
 		
 		// Get ancestors of node1 and node2.
 		ArrayList<TreeNode> ancestorsOf1 = node1.collectAncestorsToList();
